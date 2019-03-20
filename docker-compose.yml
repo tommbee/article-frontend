@@ -3,11 +3,12 @@ services:
   web:
     build:
       context: .
-      args:
-        PORT: 3001
     container_name: feed-app-frontend
     volumes:
       - .:/home/node/app
     ports:
-      - 3001:3001
+      - 8081:3000
+    environment:
+      - ARTICLE_API_TIMEOUT=500
+      - ARTICLE_API_HOST=http://localhost:8080/
  

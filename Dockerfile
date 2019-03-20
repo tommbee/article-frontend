@@ -4,8 +4,8 @@ WORKDIR /home/node/app
 
 COPY . /home/node/app
 
-ENV PORT=$PORT
+ENV NODE_PORT=3000
 
-EXPOSE $PORT
+EXPOSE 3000
 
 CMD ["npm", "start"]
