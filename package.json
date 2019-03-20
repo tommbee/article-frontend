@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",

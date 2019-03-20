@@ -1,11 +1,11 @@
 import Router from 'koa-router';
 import { ArticleService } from '../service/articleService';
-import { ChannelConfig } from '../http/config';
+import { ArticleChannelConfig } from '../http/config';
 import { Channel } from '../http/channel';
 
 const router = new Router();
-const channelConfig = new ChannelConfig();
-const channel = new Channel(channelConfig);
+const articleChannelConfig = new ArticleChannelConfig();
+const channel = new Channel(articleChannelConfig);
 const articleService = new ArticleService(channel);
 
 router.get('/', async (ctx) => {

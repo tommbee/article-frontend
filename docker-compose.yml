@@ -1,0 +1,13 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      args:
+        PORT: 3001
+    container_name: feed-app-frontend
+    volumes:
+      - .:/home/node/app
+    ports:
+      - 3001:3001
+ 

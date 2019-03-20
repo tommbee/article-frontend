@@ -14,6 +14,7 @@ export class ArticleService implements ArticleServiceInterface {
 
     public async getArticles(page: number) : Promise<Article[]>
     {
+        // Hydrate data into Article object
         return await this.channel.getRequest(`/article?page=${page}`);
     }
 }

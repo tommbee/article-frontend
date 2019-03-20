@@ -3,9 +3,9 @@ export interface ChannelConfigInterface {
     timeout() : number;
 }
 
-export class ChannelConfig implements ChannelConfigInterface{
+export class ArticleChannelConfig implements ChannelConfigInterface{
     public host() : string {
-        return process.env.ARTICLE_API_HOST || '/';
+        return process.env.ARTICLE_API_HOST || 'http://localhost:8080';
     }
     public timeout() : number {
         if (process.env.ARTICLE_API_TIMEOUT) {
