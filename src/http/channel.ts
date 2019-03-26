@@ -15,7 +15,7 @@ export class Channel implements ChannelInterface {
     public async getRequest(path: string) : Promise<any> {
         const params = { timeout: this.config.timeout() };
 
-        const [error, response] = await axios.get(`${this.config.host}${path}`, params)
+        const [error, response] = await axios.get(`${this.config.host()}${path}`, params)
             .then(data => [null, data])
             .catch(err => [err]);
 

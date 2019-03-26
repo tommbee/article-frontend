@@ -1,5 +1,7 @@
 import { Article } from '../models/article';
 import { ChannelInterface } from '../http/channel';
+import { ArticleHydratorInterface } from '../hydrator/article';
+//import { ArticleListView } from '../views/articleList';
 
 export interface ArticleServiceInterface {
     getArticles(page: number) : Promise<Article[]>
@@ -7,14 +9,16 @@ export interface ArticleServiceInterface {
 
 export class ArticleService implements ArticleServiceInterface {
     channel: ChannelInterface;
+    hydrator: ArticleHydratorInterface
 
-    constructor(channel: ChannelInterface) {
+    constructor(channel: ChannelInterface, hydrator: ArticleHydratorInterface) {
         this.channel = channel;
+        this.hydrator = hydrator;
     }
 
     public async getArticles(page: number) : Promise<Article[]>
     {
-        // Hydrate data into Article object
-        return await this.channel.getRequest(`/article?page=${page}`);
+        return await this.channel.getRequest(`/articles?page=${page}`)
+            .then(this.hydrator.hydrateList);
     }
 }

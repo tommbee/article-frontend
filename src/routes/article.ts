@@ -2,11 +2,13 @@ import Router from 'koa-router';
 import { ArticleService } from '../service/articleService';
 import { ArticleChannelConfig } from '../http/config';
 import { Channel } from '../http/channel';
+import { ArticleHydrator } from '../hydrator/article';
 
 const router = new Router();
 const articleChannelConfig = new ArticleChannelConfig();
 const channel = new Channel(articleChannelConfig);
-const articleService = new ArticleService(channel);
+const articleHydrator = new ArticleHydrator();
+const articleService = new ArticleService(channel, articleHydrator);
 
 router.get('/', async (ctx) => {
     ctx.body = await articleService.getArticles(1)
