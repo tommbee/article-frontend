@@ -4,11 +4,16 @@ services:
     build:
       context: .
     container_name: feed-app-frontend
+    networks:
+      - go-article-feed_backend_services
     volumes:
       - .:/home/node/app
     ports:
       - 8081:3000
     environment:
       - ARTICLE_API_TIMEOUT=500
-      - ARTICLE_API_HOST=http://localhost:8080/
- 
+      - ARTICLE_API_HOST=http://feed-app:8080
+  
+networks:
+  go-article-feed_backend_services:
+    external: true
