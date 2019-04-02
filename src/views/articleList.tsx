@@ -1,11 +1,13 @@
-declare namespace JSX {
-    interface ElementClass {
-        render: any;
-    }
+import * as React from 'react';
+
+export interface ArticleListProps {
+    page: number;
 }
 
-class ArticleListView {
-    render() {
-        return '<h1>Article list view</h1>';
+export class ArticleList extends React.PureComponent<ArticleListProps> {
+    render(): React.ReactNode {
+        return (
+            <div></div>
+        );
     }
 }

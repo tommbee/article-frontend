@@ -1,16 +1,11 @@
 import * as React from 'react';
 
-export interface CounterDisplayProps {
-    value: number;
-    label: string;
-}
+export interface ArticleProps {}
 
-export class CounterDisplay extends React.PureComponent<CounterDisplayProps> {
+export class Article extends React.PureComponent<ArticleProps> {
     render(): React.ReactNode {
         return (
-            <div>
-                The value of {this.props.label} is {this.props.value}
-            </div>
+            <div></div>
         );
     }
 }
