@@ -1,1 +1,0 @@
-{"version":3,"file":"articleService.js","sourceRoot":"","sources":["../../src/service/articleService.ts"],"names":[],"mappings":";;AAOA,MAAa,cAAc;IAGvB,YAAY,OAAyB;QACjC,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;IAEM,KAAK,CAAC,WAAW,CAAC,IAAY;QAEjC,mCAAmC;QACnC,OAAO,MAAM,IAAI,CAAC,OAAO,CAAC,UAAU,CAAC,iBAAiB,IAAI,EAAE,CAAC,CAAC;IAClE,CAAC;CACJ;AAZD,wCAYC"}
