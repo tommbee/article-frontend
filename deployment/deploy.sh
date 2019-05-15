@@ -26,7 +26,7 @@ kubectl apply -f ./article-app-frontend/namespace.json --kubeconfig ./site-confi
 
 ## deploy helm chart
 echo "Deploying helm chart..."
-helm upgrade -i article-frontend ./article-app-frontend \
+helm upgrade -i article-app-frontend ./article-app-frontend \
     --set image.repository=${DOCKER_IMAGE_URL} \
     --set image.tag=${CIRCLE_SHA1} --set port=${PORT} \
     --set apiTimeout=${API_TIMEOUT} \
