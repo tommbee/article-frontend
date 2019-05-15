@@ -1,11 +1,21 @@
 import * as React from 'react';
+import { Article as ArticleModel } from '../models/article';
 
-export interface ArticleProps {}
+interface ArticleProps {
+    article: ArticleModel
+}
 
-export class Article extends React.PureComponent<ArticleProps> {
+class Article extends React.PureComponent<ArticleProps> {
+    constructor(props: ArticleProps) {
+        super(props);
+    }
     render(): React.ReactNode {
         return (
-            <div></div>
+            <div className='article-list__article'>
+                <a target='_blank' href={this.props.article.url}>{this.props.article.title}</a>
+            </div>
         );
     }
 }
+
+export { Article, ArticleProps }

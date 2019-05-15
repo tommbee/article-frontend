@@ -1,24 +1,32 @@
+import { injectable, inject } from "inversify";
+import { TYPES } from "../types";
 import { Article } from '../models/article';
 import { ChannelInterface } from '../http/channel';
 import { ArticleHydratorInterface } from '../hydrator/article';
-//import { ArticleListView } from '../views/articleList';
 
-export interface ArticleServiceInterface {
+interface ArticleServiceInterface {
     getArticles(page: number) : Promise<Article[]>
 }
 
-export class ArticleService implements ArticleServiceInterface {
-    channel: ChannelInterface;
-    hydrator: ArticleHydratorInterface
+@injectable()
+class ArticleService implements ArticleServiceInterface {
+    
+    private _channel: ChannelInterface;
+    private _hydrator: ArticleHydratorInterface
 
-    constructor(channel: ChannelInterface, hydrator: ArticleHydratorInterface) {
-        this.channel = channel;
-        this.hydrator = hydrator;
+    constructor(
+        @inject(TYPES.ChannelInterface) _channel: ChannelInterface,
+        @inject(TYPES.ArticleHydratorInterface) _hydrator: ArticleHydratorInterface,
+    ) {
+        this._channel = _channel;
+        this._hydrator = _hydrator;
     }
 
     public async getArticles(page: number) : Promise<Article[]>
     {
-        return await this.channel.getRequest(`/articles?page=${page}`)
-            .then(this.hydrator.hydrateList);
+        return await this._channel.getRequest(`/articles?page=${page}`)
+            .then(this._hydrator.hydrateList);
     }
 }
+
+export { ArticleService, ArticleServiceInterface }

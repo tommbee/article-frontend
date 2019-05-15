@@ -1,13 +1,25 @@
 import * as React from 'react';
+import { Article } from '../models/article';
+import { Article as ArticleView } from './article';
 
-export interface ArticleListProps {
+interface ArticleListProps {
     page: number;
+    articles: Article[]
 }
 
-export class ArticleList extends React.PureComponent<ArticleListProps> {
+class ArticleList extends React.PureComponent<ArticleListProps> {
+    constructor(props: ArticleListProps) {
+        super(props);
+    }
     render(): React.ReactNode {
         return (
-            <div></div>
+            <div className='article-list'>
+                {this.props.articles.map((article) => {
+                    return <ArticleView article={article}></ArticleView>
+                })}
+            </div>
         );
     }
 }
+
+export { ArticleList, ArticleListProps }

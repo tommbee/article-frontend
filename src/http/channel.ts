@@ -1,21 +1,27 @@
+import { injectable, inject } from "inversify";
+import { TYPES } from "../types";
 import axios from 'axios';
 import { ChannelConfigInterface } from '../http/config';
 
-export interface ChannelInterface {
+interface ChannelInterface {
     getRequest(path: string) : Promise<any>
 }
 
-export class Channel implements ChannelInterface {
-    config: ChannelConfigInterface;
+@injectable()
+class Channel implements ChannelInterface {
+    
+    private _config: ChannelConfigInterface;
 
-    constructor(config: ChannelConfigInterface) {
-        this.config = config;
+    constructor(
+        @inject(TYPES.ChannelConfigInterface) _config: ChannelConfigInterface,
+    ) {
+        this._config = _config;
     }
 
     public async getRequest(path: string) : Promise<any> {
-        const params = { timeout: this.config.timeout() };
+        const params = { timeout: this._config.timeout() };
 
-        const [error, response] = await axios.get(`${this.config.host()}${path}`, params)
+        const [error, response] = await axios.get(`${this._config.host()}${path}`, params)
             .then(data => [null, data])
             .catch(err => [err]);
 
@@ -25,5 +31,7 @@ export class Channel implements ChannelInterface {
         }
         
         return response.data;
-    }
+    } 
 }
+
+export { ChannelInterface, Channel }

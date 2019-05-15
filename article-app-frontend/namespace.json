@@ -1,0 +1,11 @@
+{
+    "kind": "Namespace",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "article-app",
+      "labels": {
+        "name": "article-app"
+      }
+    }
+  }
+  

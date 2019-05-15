@@ -1,8 +1,8 @@
 import Koa from 'koa';
-
 import { config } from './config';
 import { routes } from './routes/article';
 import bodyParser from 'koa-bodyparser';
+import path from 'path';
 
 const app = new Koa();
 
