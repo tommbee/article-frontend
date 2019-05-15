@@ -1,15 +1,24 @@
 FROM node:8
 
-WORKDIR /home/node/app
+ENV USER=app
 
-COPY . /home/node/app
+ENV SUBDIR=appDir
 
-ENV NODE_PORT=3000
+RUN useradd --user-group --create-home --shell /bin/false $USER &&\
+    npm install --global tsc-watch npm ntypescript typescript concurrently
 
-EXPOSE 3000
+ENV HOME=/home/$USER
+
+COPY . $HOME/$SUBDIR/
+
+RUN mkdir -p $HOME/$SUBDIR/dist
+RUN chown -R $USER:$USER $HOME/*
+
+USER $USER
+
+WORKDIR $HOME/$SUBDIR
 
 RUN npm install
-
 RUN npm run build
 
 CMD ["npm", "start"]
