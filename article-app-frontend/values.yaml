@@ -45,4 +45,4 @@ tolerations: []
 affinity: {}
 
 apiTimeout: 500
-apiHost: 'http://feed-app:8080'
+apiHost: 'article-feed.article-app.svc.cluster.local'

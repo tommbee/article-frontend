@@ -23,6 +23,17 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: ARTICLE_API_TIMEOUT
+            valueFrom:
+              configMapKeyRef:
+                key:  timeout
+                name: {{ .Release.Name }}-configmap
+          - name: ARTICLE_API_HOST
+            valueFrom:
+              configMapKeyRef:
+                key:  host
+                name: {{ .Release.Name }}-configmap
           ports:
             - name: http
               containerPort: 3000

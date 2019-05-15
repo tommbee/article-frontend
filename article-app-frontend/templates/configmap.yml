@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  timeout: "{{ .Values.apiTimeout }}"
+  host: "{{ .Values.apiHost }}"
+metadata:
+  name: {{ .Release.Name }}-configmap
+  namespace: {{ .Values.nameSpace }}
