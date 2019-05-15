@@ -14,7 +14,7 @@ fullnameOverride: ""
 nameSpace: article-app
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 80
 
 ingress:
