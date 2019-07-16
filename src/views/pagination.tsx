@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as Styles from './site-styles';
 
 interface PaginationProps {
     page: number;
@@ -23,7 +24,7 @@ class Pagination extends React.PureComponent<PaginationProps> {
     }
     render(): React.ReactNode {
         return (
-            <ul className='pagination'>
+            <ul style={Styles.pagination} className='pagination'>
                 {this.getShortNumbers().map((pageNum) => {
                     return <li><a href={`/page/${pageNum}`}>{pageNum}</a></li>
                 })}
