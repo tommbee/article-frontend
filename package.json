@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@types/koa-bodyparser": "^4.2.2",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "inversify": "^5.0.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
