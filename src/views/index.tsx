@@ -25,6 +25,7 @@ class Index extends React.PureComponent<IndexProps, {}> {
                         <h1 style={Styles.logo}></h1>
                         <ArticleList page={this.props.page} articles={this.props.articles}></ArticleList>
                         <Pagination page={this.props.page}></Pagination>
+                        <div>&nbsp;</div>
                     </section>
                 </div>
             </body>

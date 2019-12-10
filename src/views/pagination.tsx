@@ -15,7 +15,6 @@ class Pagination extends React.PureComponent<PaginationProps> {
         }
         const start = (+this.props.page) - 1;
         const diff = Math.abs(0 - start);
-        console.log(diff);
         return new Array(diff).fill(undefined).map((_, i) => i + 1);
     }
     getLongNumbers(): number[] {
@@ -25,13 +24,17 @@ class Pagination extends React.PureComponent<PaginationProps> {
     render(): React.ReactNode {
         return (
             <ul style={Styles.pagination} className='pagination'>
+                {this.props.page > 1 &&
+                    <li style={Styles.paginationItem}><a href={`/page/${+this.props.page - +1}`} style={Styles.paginationLink}>&laquo;</a></li>
+                }
                 {this.getShortNumbers().map((pageNum) => {
-                    return <li><a href={`/page/${pageNum}`}>{pageNum}</a></li>
+                    return <li style={Styles.paginationItem}><a style={Styles.paginationLink} href={`/page/${pageNum}`}>{pageNum}</a></li>
                 })}
-                <li><a>{this.props.page}</a></li>
+                <li style={Styles.paginationItem}><a style={Styles.paginationItemActive}>{this.props.page}</a></li>
                 {this.getLongNumbers().map((pageNum) => {
-                    return <li><a href={`/page/${pageNum}`}>{pageNum}</a></li>
+                    return <li style={Styles.paginationItem}><a style={Styles.paginationLink} href={`/page/${pageNum}`}>{pageNum}</a></li>
                 })}
+                <li style={Styles.paginationItem}><a href={`/page/${+this.props.page + +1}`} style={Styles.paginationLink}>&raquo;</a></li>
             </ul>
         );
     }

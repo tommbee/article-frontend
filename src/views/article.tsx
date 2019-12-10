@@ -13,7 +13,7 @@ class Article extends React.PureComponent<ArticleProps> {
     }
     render(): React.ReactNode {
         return (
-            <article className='article-list__article'>
+            <article style={Styles.article} className='article-list__article'>
                 {/* <em>{this.props.article.publishedDate}</em> */}
                 <a style={Styles.link} target='_blank' href={this.props.article.url}><Moment style={Styles.date} format="ddd D MMM YYYY" date={this.props.article.publishedDate} /> {this.props.article.title}</a>
             </article>

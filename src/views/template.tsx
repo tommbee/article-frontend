@@ -34,6 +34,11 @@ const html = ({ body }: { body: string }) => `
           bottom: 15px;
           opacity: 1;
         }
+        .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
       </style>
       <title>The Daily Crossword Archive | The most comprehensive collection of online crossword puzzles</title>
       <link href="https://fonts.googleapis.com/css?family=DM+Sans|DM+Serif+Display|DM+Serif+Text&display=swap" rel="stylesheet">
